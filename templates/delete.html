@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{%block head%}
+{{super()}}
+<style type="text/css">
+    .content {
+      background-color: transparent;
+    }
+  </style>
+{%endblock%}
+<div class="content" style="">
+    {%block content%}
+    <div class="dialog-box">
+        <div class="dialog-head">
+            <i style="font-size: 15pt" class="fas fa-question-circle"></i> CONFIRM ACTION
+        </div>
+        <div class="dialog-body">
+            <p>Are you sure you want to delete {{anime.title}}?</p>
+            <form action="#" method="post">
+
+                <button class="secondary-btn" type="submit">Yes</button>
+                <button type="">No</button>
+            </form>
+        </div>
+    </div>
+    {%endblock%}
+</div>

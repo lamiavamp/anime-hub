@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+<div class="content">
+    {% block content %}
+
+    <div class="item" style="background-image: url(/static/images/{{anime.id}}.jpg);">
+        <div class="shade">
+            <span>{{anime.title}}</span><br>
+            <small><i style="color: #be4034" class="fas fa-bookmark"></i> {{catg.name}}</small>
+        </div>
+    </div>
+    <div class="text">
+        <h2>ABOUT</h2>
+        <p>
+            {{anime.description}}
+        </p>
+        {%if allowmodify == 'true'%}
+        <button onclick="window.location.href='{{url_for('editAnime', anime_id = anime.id)}}'">Edit</button>
+        <button class="secondary-btn" type="button" onclick="window.location.href='{{url_for('deleteAnime', anime_id = anime.id)}}'">Delete</button>
+        {%endif%}
+    </div>
+    {%endblock%}
+
+</div>

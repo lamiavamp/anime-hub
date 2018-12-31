@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+<div class="content">
+    {%block content%}
+    <h2 id='header1'><i style="color: #be4034" class="fas fa-bookmark"></i> {{catg.name}}</h2>
+
+    {% for anime in animelist %}
+
+    <div class="item" style="background-image: url(/static/images/{{anime.id}}.jpg);">
+        <div class="shade">
+            {{anime.title}}
+            <p>
+                {{anime.description}}
+            </p>
+            <button onclick="window.location.href='{{url_for('animeDetails',catg_id = anime.catg_id, anime_id = anime.id)}}'">More</button>
+        </div>
+    </div>
+
+    {% endfor %} 
+    {%endblock%}
+</div>

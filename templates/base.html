@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    {% block head %}
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="sidemenu">
+        {%block sidemenu%}
+        <a href="{{ url_for('index')}}"><img src="/static/images/logo.png"></a>
+        <h2>CATEGORIES</h2>
+
+        {% for category in categories %}
+        <a href="{{url_for('showCatg', catg_id = category.id)}}">{{category.name}}</a> {% endfor %}
+        {%if username%}
+        <h2>ACTIONS</h2>
+        <a href="{{ url_for('addAnime') }}"><i class="fas fa-star-of-life" style="color: #be4035"></i> Add New Anime</a>
+        {%endif%}
+        {%endblock%}
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="right-widgets">
+                {%if username %}
+                <span><i>Welcome</i>, {{username}}</span>
+                <button onclick="window.location.href='{{ url_for('gdisconnect') }}'">Logout</button> {% else %}
+                <button onclick="window.location.href='{{ url_for('showLogin') }}'">Login</button> {%endif%}
+            </div>
+        </header>
+
+        <div class="content">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright 2018 ©. All right reserved</p>
+        <a href="https://github.com/lamiavamp"><i class="fab fa-github"></i></a>
+    </footer>
+
+</body>
+
+</html>

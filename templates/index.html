@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+<div class="content">
+{% block content %}
+    <div class="main">
+        <p>
+            <span style="font-size: 30; font-weight: 100; letter-spacing: 4;">INTRODUCING</span>
+            <br> MIRAI NIKKI
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>WHATS NEW?</h2>
+        <div class="feed scroll">
+            <ul>
+                {% if allanime %} {% for anime in allanime %}
+                <li>
+                    {{ anime.title }}
+                    <br>
+                    <small>
+                                {{ anime.description }}
+                            </small>
+                    <small><a href="{{ url_for('animeDetails', anime_id = anime.id, catg_id = anime.catg_id) }}">More</a></small>
+                </li>
+                {% endfor %} {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>TOP ANIME</h2>
+        <div class="feed scroll">
+            <ul>
+                {% if topanime %} {% for anime in topanime %}
+
+                <li>
+                    <a>{{ anime.title }}</a>
+                    <br>
+                    <small>
+                                {{ anime.description }}
+                            </small>
+                </li>
+                {% endfor %} {% endif %}
+
+            </ul>
+        </div>
+    </div>
+{%endblock%}
+</div>
